@@ -1,0 +1,17 @@
+.containter{
+    position:relative;
+/*    background-color: aliceblue;*/
+}
+
+#time {
+    position:absolute;
+    color:antiquewhite;
+    right: 2rem;
+}
+
+.fa-cloud{
+    position:absolute;
+    color:aqua;
+    left: 1rem;
+    
+}
