@@ -14,10 +14,24 @@
     <link rel="stylesheet" type="text/css" href="/display.css">
 <!--    <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">-->
 <!--    <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src= "display.js"></script>
+    <script>
+        $(document).ready(
+            function() {
+                getReddit();
+                var randNum = Math.floor(Math.random() * 9);
+                setInterval(function() {
+                    randNum = Math.floor(Math.random() * 9) + 1;
+                    $('#reddit').text(
+                        "\"" + worldnewsData.data.children[randNum].data.title + "\"");
+                }, 10000);
+            });
+    </script>
 </head>
 
 <!-- apply our angular app -->
-<body ng-app="mirrorApp">
+<body ng-app="mirrorApp" onload= "startTime()">
     <div class="container">
         <h1><div id="time"></div></h1>
          
@@ -29,6 +43,7 @@
         </div>
 
         <div id="reddit"></div>
+    <div id="reddit_static">Reddit /r/showerthoughts</div>
         
     </div>
 </body>
