@@ -87,7 +87,7 @@ $(document).ready( function() {
     
     socket.on('lighting', function(data) {
         console.log(data.level);
-        if (data.level === 'DARK' || data.level == 'DIM') {
+        if (data.level === 'DARK') {
             $('body').addClass('dfw-hide');
         } else {
             $('body').removeClass('dfw-hide');
@@ -108,7 +108,6 @@ $(document).ready( function() {
                 console.log('Done brushing!')
                 $('.dfw-teeth').addClass('dfw-hide');
                 $('.dfw-home').removeClass('dfw-hide');
-                stopTimer();
             }
         }
     });
@@ -123,8 +122,7 @@ $(document).ready( function() {
     }, 10000);
 });
 
-function countdownTimer( elementName, minutes, seconds )
-{
+function countdownTimer( elementName, minutes, seconds ) {
     var element, endTime, hours, mins, msLeft, time;
 
     function twoDigits( n )
