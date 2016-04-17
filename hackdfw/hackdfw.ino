@@ -18,11 +18,13 @@ void loop() {
   pressureVal = analogRead(pressurePin);
   motionVal = analogRead(motionPin);
   lightVal = analogRead(lightPin);    // read the input pin
-  if (pressureVal > 300) {
-    Serial.println("SENSOR PRESSED");
+  if (pressureVal > 1000) {
+    Serial.println("PRESS ON");
+  } else {
+    Serial.println("PRESS OFF");
   }
   if (motionVal > 0) {
-    Serial.println("MOTION DETECTED");
+    Serial.println("MOTION");
   }
 
   //Interrpret Light values
