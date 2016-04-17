@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function() {
              document.getElementById('forecast_high').innerHTML = "H " + Math.floor(forecastData.forecast.simpleforecast.forecastday[0].high.fahrenheit) + "&deg;";
              document.getElementById('forecast_low').innerHTML =  "L " + Math.floor(forecastData.forecast.simpleforecast.forecastday[0].low.fahrenheit) + "&deg;";
         });
-}
+})
 
         // worldnewsData = null;
         // $.get("https://www.reddit.com/r/worldnews/hot.json?limit=1", function(data, status){
