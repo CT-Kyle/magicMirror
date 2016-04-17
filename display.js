@@ -1,4 +1,4 @@
-var weatherData;
+var weatherData = {'str':97};
 function startTime() {
     console.log("AAAAAA");
     var today = new Date();
@@ -10,8 +10,10 @@ function startTime() {
     h = h ? h : 12;
     m = checkTime(m);
     s = checkTime(s);
+//    document.getElementById('time').innerHTML =
+//    h + ":" + m + ":" + s + ' ' + ampm;
     document.getElementById('time').innerHTML =
-    h + ":" + m + ":" + s + ' ' + ampm;
+    h + ":" + m + ampm;
 //    var t = setTimeout(startTime, 500);
     
         //API key: 1450592f41d5c8cd
@@ -30,13 +32,32 @@ function checkTime(i) {
 
 document.addEventListener("DOMContentLoaded", function() {
 //  you_function(...);
-    console.log("CCCCCCC");
+//    console.log("CCCCCCC");
+        weatherData = null;
          $.get("http://api.wunderground.com/api/1450592f41d5c8cd/conditions/q/TX/Dallas.json", function(data, status){
+                console.log("CCCCCCC");
             //console.log(data);
             weatherData = data;
+            console.log(weatherData);
+             
+             console.log(weatherData.current_observation.temp_f);
+             
+             document.getElementById('temp_f').innerHTML = Math.floor(weatherData.current_observation.temp_f)+"&deg;";
         });
-console.log(weatherData);
+    
+        forecastData = null;
+         $.get("http://api.wunderground.com/api/1450592f41d5c8cd/forecast/q/TX/Dallas.json", function(data, status){
+                console.log("DDDDDDD");
+            //console.log(data);
+            forecastData = data;
+            console.log(forecastData);
+             
+             document.getElementById('forecast_high_low').innerHTML = "H " + Math.floor(forecastData.forecast.simpleforecast.forecastday[0].high.fahrenheit) + "&deg;" + " - L " + Math.floor(forecastData.forecast.simpleforecast.forecastday[0].low.fahrenheit) + "&deg;";
+        });
+    
+        
 });
+
 
 ////API key: 1450592f41d5c8cd
 //function getWeather() {
@@ -48,3 +69,5 @@ console.log(weatherData);
 ////    });
 ////});
 //}
+
+console.log(weatherData);

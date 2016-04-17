@@ -20,8 +20,13 @@
 <body ng-app="mirrorApp" onload= "startTime()">
     <div class="container">
         <h1><div id="time"></div></h1>
-        <button>Send an HTTP GET request to a page and get the result back</button>
-        <div><i class="fa fa-cloud fa-5x" aria-hidden="true"></i></div>
+         
+        <div id="weather">
+            <div><i class="fa fa-cloud fa-5x" aria-hidden="true"></i></div>
+            <div id="temp_f"></div>
+            <div id="forecast_high_low"></div>
+        </div>
+        
     </div>
 </body>
 </html>
