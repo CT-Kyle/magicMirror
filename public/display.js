@@ -1,4 +1,5 @@
 var weatherData = {'str':97};
+worldnewsData = null;
 function startTime() {
     console.log("AAAAAA");
     var today = new Date();
@@ -61,37 +62,26 @@ document.addEventListener("DOMContentLoaded", function() {
              document.getElementById('forecast_high').innerHTML = "H " + Math.floor(forecastData.forecast.simpleforecast.forecastday[0].high.fahrenheit) + "&deg;";
              document.getElementById('forecast_low').innerHTML =  "L " + Math.floor(forecastData.forecast.simpleforecast.forecastday[0].low.fahrenheit) + "&deg;";
         });
+//    getReddit();
 
-        worldnewsData = null;
-        $.get("https://www.reddit.com/r/worldnews/hot.json?limit=1", function(data, status){
+
+});
+function getReddit() {
+
+        $.get("https://www.reddit.com/r/showerthoughts/hot.json?limit=10", function(data, status){
             console.log("REDDIT REQUEST");
             worldnewsData = data;
-            console.log(worldnewsData);
+//            for(var i=0; i<10; i++){
+//                setInterval(updateDisplay(i), 1000);
+//            }
+//            console.log(worldnewsData);
+//            console.log(worldnewsData);
+        }); 
+}
 
-            document.getElementById('reddit').innerHTML =  worldnewsData.data.children[0].data.title;
-        });
-    
-});
-
-$(document).ready( function() {
-    // socket stuff
-    console.log('socket connecting...');
-    var socket = io();
-    socket.on('lighting', function(data) {
-        console.log('lighting', data);
-    });
-})
+function updateDisplay(){
+        var randNum = Math.floor(Math.random() * 9);
+        document.getElementById('reddit').innerHTML =  worldnewsData.data.children[randNum].data.title;
+}
 
 
-////API key: 1450592f41d5c8cd
-//function getWeather() {
-////$(document).ready(function(){
-//    console.log("BBBBBB");
-////    $.get("http://api.wunderground.com/api/1450592f41d5c8cd/conditions/q/TX/Dallas.json", function(data, status){
-//////        alert("Data: " + data + "\nStatus: " + status);
-////        console.log(data);
-////    });
-////});
-//}
-
-console.log(weatherData);
