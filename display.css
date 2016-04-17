@@ -27,6 +27,11 @@
     
 }
 
+#weather_icon {
+    position: absolute;
+
+}
+
 #temp_f {
     float: left;
     font-size: 10rem;
@@ -34,10 +39,29 @@
     margin-left: 4rem;
 }
 
-#forecast_high_low {
+#forecast_high {
     display: block;
     float:left;
+    clear: left;
     font-size: 7rem;
     font-weight: bold;
     
+}
+
+#forecast_low {
+    display: block;
+    float:left;
+
+    font-size: 7rem;
+    font-weight: bold;
+    margin-left: 2rem;
+    
+}
+
+#reddit {
+    position: absolute;
+    float: center;
+    bottom:2rem;
+    font-size: 5rem;
+    text-align: center;
 }

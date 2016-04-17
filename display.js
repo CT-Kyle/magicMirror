@@ -39,6 +39,12 @@ document.addEventListener("DOMContentLoaded", function() {
             //console.log(data);
             weatherData = data;
             console.log(weatherData);
+
+            document.getElementById('weather_icon').crossOrigin = "Anonymous";
+
+            weatherIcon = weatherData.current_observation.icon_url;
+            document.getElementById('weather_icon').src = weatherIcon;
+            console.log(document.getElementById('weather_icon').src);
              
              console.log(weatherData.current_observation.temp_f);
              
@@ -47,12 +53,22 @@ document.addEventListener("DOMContentLoaded", function() {
     
         forecastData = null;
          $.get("http://api.wunderground.com/api/1450592f41d5c8cd/forecast/q/TX/Dallas.json", function(data, status){
-                console.log("DDDDDDD");
+            console.log("DDDDDDD");
             //console.log(data);
             forecastData = data;
             console.log(forecastData);
              
-             document.getElementById('forecast_high_low').innerHTML = "H " + Math.floor(forecastData.forecast.simpleforecast.forecastday[0].high.fahrenheit) + "&deg;" + " - L " + Math.floor(forecastData.forecast.simpleforecast.forecastday[0].low.fahrenheit) + "&deg;";
+             document.getElementById('forecast_high').innerHTML = "H " + Math.floor(forecastData.forecast.simpleforecast.forecastday[0].high.fahrenheit) + "&deg;";
+             document.getElementById('forecast_low').innerHTML =  "L " + Math.floor(forecastData.forecast.simpleforecast.forecastday[0].low.fahrenheit) + "&deg;";
+        });
+
+        worldnewsData = null;
+        $.get("https://www.reddit.com/r/worldnews/hot.json?limit=1", function(data, status){
+            console.log("REDDIT REQUEST");
+            worldnewsData = data;
+            console.log(worldnewsData);
+
+            document.getElementById('reddit').innerHTML =  worldnewsData.data.children[0].data.title;
         });
     
         
