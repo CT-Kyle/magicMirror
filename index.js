@@ -17,4 +17,9 @@ io.on('connection', socket => {
 	socket.on('disconnect', () => {
 		console.log('socket disconnect');
 	});
+
+	socket.on('lighting', msg => {
+		console.log('lighting', msg);
+		io.emit('lighting', msg);
+	});
 });
