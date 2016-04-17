@@ -38,6 +38,6 @@ void loop() {
   } else {
     Serial.println("LIGHTING BRIGHT");
   }
-  Serial.println(lightVal);
+//  Serial.println(lightVal);
   delay(500);
 }
