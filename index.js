@@ -22,4 +22,9 @@ io.on('connection', socket => {
 		console.log('lighting', msg);
 		io.emit('lighting', msg);
 	});
+
+	socket.on('press', msg => {
+		console.log('press', msg);
+		io.emit('press', msg);
+	})
 });

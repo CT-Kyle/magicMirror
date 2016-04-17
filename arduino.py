@@ -5,6 +5,7 @@ import re
 
 ser = serial.Serial('/dev/tty.usbmodemFD121', 9600)
 light_level = ''
+press_status = ''
 
 with SocketIO('localhost', 3000) as socketIO:
 	while True:
@@ -16,4 +17,10 @@ with SocketIO('localhost', 3000) as socketIO:
 			if level != light_level:
 				light_level = level
 				socketIO.emit('lighting', {'level': light_level})
-
+		elif (re.match('PRESS.*', line)):
+			status = line.replace('PRESS ', '')
+			if (status != press_status):
+				press_status = status
+				socketIO.emit('press', {'status': press_status})
+		elif (re.match('MOTION.*', line)):
+			socketIO.emit('motion');
