@@ -27,13 +27,13 @@ void loop() {
 
   //Interrpret Light values
   if (lightVal <= 5) {
-    Serial.println("DARK LIGHTING");       
+    Serial.println("LIGHTING DARK");
   } else if (lightVal <= 20 && lightVal > 5) {
-    Serial.println("DIM LIGHTING");
+    Serial.println("LIGHTING DIM");
   } else if (lightVal <= 50 && lightVal > 20) {
-    Serial.println("MODERATE LIGHTING");
+    Serial.println("LIGHTING MODERATE");
   } else {
-    Serial.println("BRIGHT LIGHTING");
+    Serial.println("LIGHTING BRIGHT");
   }
   delay(500);
   
