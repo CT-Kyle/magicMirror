@@ -1,7 +1,6 @@
 var weatherData = {'str':97};
 worldnewsData = null;
 function startTime() {
-    console.log("AAAAAA");
     var today = new Date();
     var h = today.getHours();
     var m = today.getMinutes();
@@ -19,7 +18,6 @@ function startTime() {
     
         //API key: 1450592f41d5c8cd
     $(document).ready(function(){
-        console.log("BBBBBB");
 //        $.get("http://api.wunderground.com/api/1450592f41d5c8cd/conditions/q/TX/Dallas.json", function(data, status){
 //            console.log(data);
 //            return data;
@@ -32,36 +30,32 @@ function checkTime(i) {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-//  you_function(...);
-//    console.log("CCCCCCC");
-        weatherData = null;
-         $.get("http://api.wunderground.com/api/1450592f41d5c8cd/conditions/q/TX/Dallas.json", function(data, status){
-                console.log("CCCCCCC");
-            //console.log(data);
-            weatherData = data;
-            console.log(weatherData);
+    weatherData = null;
+     $.get("http://api.wunderground.com/api/1450592f41d5c8cd/conditions/q/TX/Dallas.json", function(data, status){
+        //console.log(data);
+        weatherData = data;
+        console.log(weatherData);
 
-            document.getElementById('weather_icon').crossOrigin = "Anonymous";
+        document.getElementById('weather_icon').crossOrigin = "Anonymous";
 
-            weatherIcon = weatherData.current_observation.icon_url;
-            document.getElementById('weather_icon').src = weatherIcon;
-            console.log(document.getElementById('weather_icon').src);
-             
-             console.log(weatherData.current_observation.temp_f);
-             
-             document.getElementById('temp_f').innerHTML = Math.floor(weatherData.current_observation.temp_f)+"&deg;";
-        });
-    
-        forecastData = null;
-         $.get("http://api.wunderground.com/api/1450592f41d5c8cd/forecast/q/TX/Dallas.json", function(data, status){
-            console.log("DDDDDDD");
-            //console.log(data);
-            forecastData = data;
-            console.log(forecastData);
-             
-             document.getElementById('forecast_high').innerHTML = "H " + Math.floor(forecastData.forecast.simpleforecast.forecastday[0].high.fahrenheit) + "&deg;";
-             document.getElementById('forecast_low').innerHTML =  "L " + Math.floor(forecastData.forecast.simpleforecast.forecastday[0].low.fahrenheit) + "&deg;";
-        });
+        weatherIcon = weatherData.current_observation.icon_url;
+        document.getElementById('weather_icon').src = weatherIcon;
+        console.log(document.getElementById('weather_icon').src);
+         
+         console.log(weatherData.current_observation.temp_f);
+         
+         document.getElementById('temp_f').innerHTML = Math.floor(weatherData.current_observation.temp_f)+"&deg;";
+    });
+
+    forecastData = null;
+     $.get("http://api.wunderground.com/api/1450592f41d5c8cd/forecast/q/TX/Dallas.json", function(data, status){
+        //console.log(data);
+        forecastData = data;
+        console.log(forecastData);
+         
+         document.getElementById('forecast_high').innerHTML = "H " + Math.floor(forecastData.forecast.simpleforecast.forecastday[0].high.fahrenheit) + "&deg;";
+         document.getElementById('forecast_low').innerHTML =  "L " + Math.floor(forecastData.forecast.simpleforecast.forecastday[0].low.fahrenheit) + "&deg;";
+    });
 })
 
         // worldnewsData = null;
@@ -97,7 +91,12 @@ $(document).ready( function() {
     console.log('socket connecting...');
     var socket = io();
     socket.on('lighting', function(data) {
-        console.log('lighting', data);
+        console.log(data.level);
+        if (data.level === 'DARK' || data.level == 'DIM') {
+            $('body').addClass('dfw-hide');
+        } else {
+            $('body').removeClass('dfw-hide');
+        }
     });
 })
 

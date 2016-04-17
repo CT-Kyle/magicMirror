@@ -79,3 +79,12 @@ body {
     text-align: center;
     margin-left: 35%;
 }
+
+.dfw-body {
+    opacity: 1;
+    -webkit-transition: opacity 1s ease-in-out;
+}
+
+.dfw-body.dfw-hide {
+    opacity: 0;
+}
