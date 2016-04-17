@@ -25,20 +25,19 @@ void loop() {
   pressureVal = pressureVal / burst_length;
   lightVal = lightVal / burst_length;
   
-//  pressureVal = analogRead(pressurePin);
-  if (pressureVal > 1000) {
+  if (pressureVal > 300) {
     Serial.println("PRESS ON");
   } else {
     Serial.println("PRESS OFF");
   }
-  Serial.println(pressureVal);
+  delay(10);
   
   motionVal = analogRead(motionPin);
   if (motionVal > 0) {
     Serial.println("MOTION");
   }
+  delay(10);
 
-//  lightVal = analogRead(lightPin);    // read the input pin
 //  //Interrpret Light values
   if (lightVal <= 5) {
     Serial.println("LIGHTING DARK");
@@ -49,6 +48,5 @@ void loop() {
   } else {
     Serial.println("LIGHTING BRIGHT");
   }
-  Serial.println(lightVal);
   delay(500);
 }

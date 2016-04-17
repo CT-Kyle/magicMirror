@@ -5,7 +5,7 @@ import re
 
 ser = serial.Serial('/dev/tty.usbmodemFD121', 9600)
 light_level = ''
-press_status = ''
+press_status = False
 
 with SocketIO('localhost', 3000) as socketIO:
 	while True:

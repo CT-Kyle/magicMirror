@@ -3,13 +3,27 @@ body {
     padding: 0;
 }
 
-.dfw-container{
+.dfw-body {
+    opacity: 1;
+    -webkit-transition: opacity 1s ease-in-out;
+}
+
+.dfw-body.dfw-hide {
+    opacity: 1;
+}
+
+.dfw-home{
     position: absolute;
+    opacity: 1;
     left: 0;
     right: 0;
     bottom: 0;
     top: 0;
     margin: 60px;
+}
+
+.dfw-home.dfw-hide {
+    opacity: 0;
 }
 
 #time {
@@ -82,20 +96,22 @@ body {
     -webkit-transition: opacity 1s ease-in-out;
 }
 
-.reddit.dfw-hide {
-    opacity: 0;
-}
-
 .reddit_static {
     font-size: 2rem;
     margin-top: 12px;
 }
 
-.dfw-body {
+.dfw-teeth {
     opacity: 1;
-    -webkit-transition: opacity 1s ease-in-out;
+    text-align: center;
+    margin-top: 280px;
 }
 
-.dfw-body.dfw-hide {
-    opacity: 1;
+.dfw-teeth.dfw-hide {
+    opacity: 0;
+    display: none;
+}
+
+.dfw-teeth-timer {
+    font-size: 280px;
 }

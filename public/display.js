@@ -1,5 +1,6 @@
 var weatherData = {'str':97};
 worldnewsData = null;
+var brushing = false;
 function startTime() {
     var today = new Date();
     var h = today.getHours();
@@ -83,12 +84,32 @@ $(document).ready( function() {
     // socket stuff
     console.log('socket connecting...');
     var socket = io();
+    
     socket.on('lighting', function(data) {
         console.log(data.level);
         if (data.level === 'DARK' || data.level == 'DIM') {
             $('body').addClass('dfw-hide');
         } else {
             $('body').removeClass('dfw-hide');
+        }
+    });
+
+    socket.on('press', function(data) {
+        console.log('press', data.status)
+        var status = data.status;
+        if (status === 'ON') {
+            brushing = !brushing;
+            if (brushing) {
+                console.log('Now brushing!')
+                $('.dfw-home').addClass('dfw-hide');
+                $('.dfw-teeth').removeClass('dfw-hide');
+                countdownTimer('#dfw-teeth-timer', 2, 0);
+            } else {
+                console.log('Done brushing!')
+                $('.dfw-teeth').addClass('dfw-hide');
+                $('.dfw-home').removeClass('dfw-hide');
+                stopTimer();
+            }
         }
     });
 
@@ -100,7 +121,35 @@ $(document).ready( function() {
         $('.reddit').text(
             "\"" + worldnewsData.data.children[randNum].data.title + "\"");
     }, 10000);
-})
+});
+
+function countdownTimer( elementName, minutes, seconds )
+{
+    var element, endTime, hours, mins, msLeft, time;
+
+    function twoDigits( n )
+    {
+        return (n <= 9 ? "0" + n : n);
+    }
+
+    function updateTimer()
+    {
+        msLeft = endTime - (+new Date);
+        if ( msLeft < 1000 ) {
+            element.innerHTML = "countdown's over!";
+        } else {
+            time = new Date( msLeft );
+            hours = time.getUTCHours();
+            mins = time.getUTCMinutes();
+            element.innerHTML = (hours ? hours + ':' + twoDigits( mins ) : mins) + ':' + twoDigits( time.getUTCSeconds() );
+            setTimeout( updateTimer, time.getUTCMilliseconds() + 500 );
+        }
+    }
+
+    element = document.getElementById( elementName );
+    endTime = (+new Date) + 1000 * (60*minutes + seconds) + 500;
+    updateTimer();
+}
 
 
 ////API key: 1450592f41d5c8cd
