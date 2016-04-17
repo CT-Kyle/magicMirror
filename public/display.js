@@ -71,8 +71,16 @@ document.addEventListener("DOMContentLoaded", function() {
             document.getElementById('reddit').innerHTML =  worldnewsData.data.children[0].data.title;
         });
     
-        
 });
+
+$(document).ready( function() {
+    // socket stuff
+    console.log('socket connecting...');
+    var socket = io();
+    socket.on('lighting', function(data) {
+        console.log('lighting', data);
+    });
+})
 
 
 ////API key: 1450592f41d5c8cd
