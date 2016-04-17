@@ -78,6 +78,12 @@ body {
 
 .reddit {
     font-size: 5rem;
+    opacity: 1;
+    -webkit-transition: opacity 1s ease-in-out;
+}
+
+.reddit.dfw-hide {
+    opacity: 0;
 }
 
 .reddit_static {

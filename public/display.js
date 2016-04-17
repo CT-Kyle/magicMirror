@@ -66,17 +66,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
         //     document.getElementById('reddit').innerHTML =  worldnewsData.data.children[0].data.title;
         // });
-function getReddit() {
-
-        $.get("https://www.reddit.com/r/showerthoughts/hot.json?limit=10", function(data, status){
-            console.log("REDDIT REQUEST");
-            worldnewsData = data;
-//            for(var i=0; i<10; i++){
-//                setInterval(updateDisplay(i), 1000);
-//            }
-//            console.log(worldnewsData);
-//            console.log(worldnewsData);
-        }); 
+function goReddit() {
+    $.get("https://www.reddit.com/r/showerthoughts/hot.json?limit=10", function(data, status){
+        worldnewsData = data;
+    }); 
 }
 
 function updateDisplay(){
@@ -100,11 +93,11 @@ $(document).ready( function() {
     });
 
     // reddit stuff
-    getReddit();
+    goReddit();
     var randNum = Math.floor(Math.random() * 9);
     setInterval(function() {
         randNum = Math.floor(Math.random() * 9) + 1;
-        $('#reddit').text(
+        $('.reddit').text(
             "\"" + worldnewsData.data.children[randNum].data.title + "\"");
     }, 10000);
 })
