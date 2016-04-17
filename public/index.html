@@ -16,34 +16,26 @@
 <!--    <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src= "display.js"></script>
-    <script>
-        $(document).ready(
-            function() {
-                getReddit();
-                var randNum = Math.floor(Math.random() * 9);
-                setInterval(function() {
-                    randNum = Math.floor(Math.random() * 9) + 1;
-                    $('#reddit').text(
-                        "\"" + worldnewsData.data.children[randNum].data.title + "\"");
-                }, 10000);
-            });
-    </script>
 </head>
 
 <!-- apply our angular app -->
-<body class="dfw-body" ng-app="mirrorApp" onload= "startTime()">
-    <div class="container">
-        <h1><div id="time"></div></h1>
+<body class="dfw-body" onload= "startTime()">
+    <div class="dfw-container">
+        <h1 class="clearfix">
+            <div id="time"></div>
+        </h1>
          
-        <div id="weather">
+        <div class="clearfix" id="weather">
             <img id="weather_icon"></img>
             <div id="temp_f"></div>
             <div id="forecast_high"></div>
             <div id="forecast_low"></div>
         </div>
 
-        <div id="reddit"></div>
-    <div id="reddit_static">Reddit /r/showerthoughts</div>
+    <div class="reddit-wrap">
+        <div class="reddit" id="reddit"></div>
+        <div class="reddit_static" id="reddit_static">Reddit /r/showerthoughts</div>
+    </div>
         
     </div>
 </body>

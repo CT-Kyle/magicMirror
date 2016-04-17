@@ -98,6 +98,15 @@ $(document).ready( function() {
             $('body').removeClass('dfw-hide');
         }
     });
+
+    // reddit stuff
+    getReddit();
+    var randNum = Math.floor(Math.random() * 9);
+    setInterval(function() {
+        randNum = Math.floor(Math.random() * 9) + 1;
+        $('#reddit').text(
+            "\"" + worldnewsData.data.children[randNum].data.title + "\"");
+    }, 10000);
 })
 
 
