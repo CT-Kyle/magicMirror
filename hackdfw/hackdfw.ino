@@ -39,7 +39,7 @@ void loop() {
   delay(10);
 
 //  //Interrpret Light values
-  if (lightVal <= 5) {
+  if (lightVal <= 10) {
     Serial.println("LIGHTING DARK");
   } else if (lightVal <= 20) {
     Serial.println("LIGHTING DIM");
