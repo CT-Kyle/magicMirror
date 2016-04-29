@@ -20,11 +20,12 @@ body {
     bottom: 0;
     top: 0;
     margin: 60px;
-    -webkit-transition: opacity 1s ease-in-out;
+    -webkit-transition: opacity 1s ease-in-out 0.8s;
 }
 
 .dfw-home.dfw-hide {
     opacity: 0;
+    -webkit-transition: opacity 1s ease-in-out;
 }
 
 #time {
@@ -106,12 +107,12 @@ body {
     opacity: 1;
     text-align: center;
     margin-top: 280px;
-    -webkit-transition: opacity 1s ease-in-out;
+    -webkit-transition: opacity 1s ease-in-out 0.8s;
 }
 
 .dfw-teeth.dfw-hide {
     opacity: 0;
-    display: none;
+    -webkit-transition: opacity 1s ease-in-out;
 }
 
 .dfw-teeth-timer {

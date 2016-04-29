@@ -1,6 +1,7 @@
 var weatherData = {'str':97};
 worldnewsData = null;
 var brushing = false;
+var endTime = +new Date(0);
 function startTime() {
     var today = new Date();
     var h = today.getHours();
@@ -87,7 +88,7 @@ $(document).ready( function() {
     
     socket.on('lighting', function(data) {
         console.log(data.level);
-        if (data.level === 'DARK') {
+        if (data.level === 'DARK' || data.level === 'DIM') {
             $('body').addClass('dfw-hide');
         } else {
             $('body').removeClass('dfw-hide');
@@ -108,6 +109,7 @@ $(document).ready( function() {
                 console.log('Done brushing!')
                 $('.dfw-teeth').addClass('dfw-hide');
                 $('.dfw-home').removeClass('dfw-hide');
+                stopCountownTimer();
             }
         }
     });
@@ -123,7 +125,7 @@ $(document).ready( function() {
 });
 
 function countdownTimer( elementName, minutes, seconds ) {
-    var element, endTime, hours, mins, msLeft, time;
+    var element, hours, mins, msLeft, time;
 
     function twoDigits( n )
     {
@@ -133,8 +135,11 @@ function countdownTimer( elementName, minutes, seconds ) {
     function updateTimer()
     {
         msLeft = endTime - (+new Date);
-        if ( msLeft < 1000 ) {
-            element.innerHTML = "countdown's over!";
+        if ( msLeft < 0 ) {
+            return;
+        }
+        if ( msLeft < 1000) {
+            element.innerHTML = "Mmmmm, fresh.";
         } else {
             time = new Date( msLeft );
             hours = time.getUTCHours();
@@ -149,6 +154,9 @@ function countdownTimer( elementName, minutes, seconds ) {
     updateTimer();
 }
 
+function stopCountownTimer() {
+    endTime = new Date(0);
+}
 
 ////API key: 1450592f41d5c8cd
 //function getWeather() {
